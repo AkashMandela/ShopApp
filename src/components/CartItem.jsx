@@ -17,11 +17,27 @@ const CartItem = ({ item }) => {
           <img alt="" src={item.image} className="object-cover" />
         </div>
         <div className="w-[70%] self-start space-y-5 ml-5">
-          <h1 className="text-xl text-slate-700 font-semibold">{item.title}</h1>
-          <p className="text-base text-slate-700 font-medium">{item.description}</p>
+          <h1 className="text-xl text-slate-700 font-semibold block lg:hidden">
+            {item.title.split(" ").slice(0, 3).join(" ")}...
+          </h1>
+
+          <h1 className="text-xl text-slate-700 font-semibold hidden lg:block">
+            {item.title}
+          </h1>
+
+          <p className="text-base text-slate-700 font-medium block lg:hidden">
+            {item.description.split(" ").slice(0, 5).join(" ")}...
+          </p>
+
+          <p className="text-base text-slate-700 font-medium hidden lg:block">
+            {item.description}
+          </p>
           <div className="flex items-center justify-between">
             <p className="text-green-600 font-bold text-lg">${item.price}</p>
-            <button className="text-red-800  bg-red-200 group hover:bg-red-400 transition-transform duration-300 cursor-pointer rounded-full p-3 mr-3" onClick={removeFromCart}>
+            <button
+              className="text-red-800  bg-red-200 group hover:bg-red-400 transition-transform duration-300 cursor-pointer rounded-full p-3 mr-3"
+              onClick={removeFromCart}
+            >
               <AiFillDelete />
             </button>
           </div>
